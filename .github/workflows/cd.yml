@@ -33,7 +33,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ci-cd-tutorial:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/git-action:latest
 
       # Deploy to EC2 via SSH
       - name: Deploy Docker Image to EC2
@@ -44,9 +44,9 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/ci-cd-tutorial:latest
-            sudo docker stop ci-cd-tutorial || true
-            sudo docker rm ci-cd-tutorial || true
-            sudo docker run -d --name ci-cd-tutorial -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/ci-cd-tutorial:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/git-action:latest
+            sudo docker stop git-action || true
+            sudo docker rm git-action || true
+            sudo docker run -d --name git-action -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/git-action:latest
 
-# Note: Replace ci-cd-tutorial with your docker repo application's name
+# Note: Replace git-action with your docker repo application's name
