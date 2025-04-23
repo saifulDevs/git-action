@@ -4,7 +4,7 @@ const app = express();
 const PORT = 8080;
 
 app.get("/", (req: any, res: { send: (arg0: string) => void }) => {
-  res.send("This is Home Page");
+  res.send("This is Home");
 });
 
 app.get("/product", (req: any, res: { send: (arg0: string) => void }) => {
